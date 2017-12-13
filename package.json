@@ -108,5 +108,9 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "aphrodite": "^1.2.5",
+    "react-animations": "^1.0.0"
   }
 }
