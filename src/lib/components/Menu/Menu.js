@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var newClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.props.active && this.props.appStyle);
+        var newClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.props.active && this.props.appClassName);
         return React.cloneElement(child, {
           className: `${classes} ${newClass}`,
         });
@@ -135,6 +135,9 @@ var styles = StyleSheet.create({
     opacity: '.9',
     boxShadow: 'rgba(0, 0, 0, 0.3) 0 0 10px 3px',
     top: '50%',
+    maxHeight: '100vh',
+    overflow: 'auto',
+    minHeight: '400px',
     animationName: [scaleInKeyFrames, opacityKeyframes],
     animationDuration: '1s',
     // animationIterationCount: 'infinite',
