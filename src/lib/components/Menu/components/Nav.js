@@ -8,6 +8,7 @@ import React from 'react';
 // NPM Modules
 import { StyleSheet, css } from 'aphrodite';
 import { fadeInLeft } from 'react-animations';
+import { Link } from 'react-router-dom';
 
 export default class Nav extends React.Component {
 
@@ -24,15 +25,20 @@ export default class Nav extends React.Component {
         var active = window.location.pathname === navItem.path;
         return (
           <div key={`react_atmosphere_nav_item_${index}`} className={css(styles.navItem, this.props.navItemClassName, active && styles.activeLink)} style={this.props.navItemStyle}>
-            <a href={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
-              { navItem.label }
-            </a>
+            {this.props.reactRouter
+              ? <Link to={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
+                  { navItem.label }
+                </Link>
+              : <a href={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
+                  { navItem.label }
+                </a>
+            }
           </div>
         );
       }
     });
     return (
-      <div className={css(styles.nav, styles.fadeInLeft)}>
+      <div className={css(styles.nav, styles.fadeInLeft)} onClick={this.props.closeMenu}>
         { nav }
         <div className={css(styles.tagLine)}>
           { this.props.tagLine }

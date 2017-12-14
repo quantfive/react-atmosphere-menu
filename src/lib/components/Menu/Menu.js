@@ -53,6 +53,8 @@ export default class Menu extends React.Component {
                 navItemClassName={this.props.navItemClassName}
                 navLinkStyle={this.props.navLinkStyle}
                 linkClassName={this.props.linkClassName}
+                reactRouter={this.props.reactRouter}
+                closeMenu={this.props.closeMenu}
               />
             </div>
           : null
@@ -107,12 +109,15 @@ const scaleOutKeyFrames = {
 
 var styles = StyleSheet.create({
   menu: {
+    position: 'relative',
+    overflow: 'hidden',
   },
   backgroundActive: {
     background: `url(${bg}) no-repeat center bottom`,
     backgroundSize: 'cover',
     height: '100vh',
-    minWidth: '100vw',
+    width: '120vw',
+    minWidth: '500px',
     minHeight: '500px',
   },
   navWrapper: {
@@ -142,6 +147,7 @@ var styles = StyleSheet.create({
     // animationDuration: '1s',
   },
   appScale: {
+    minWidth: '100vw',
     position: 'absolute',
     right: '-250px',
     opacity: '.9',
