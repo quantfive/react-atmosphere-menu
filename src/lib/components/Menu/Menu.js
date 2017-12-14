@@ -13,7 +13,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { fadeInRight } from 'react-animations';
 
 // Assets
-import bg from './assets/img/background.png';
+import bg from './assets/img/background.jpg';
 
 export default class Menu extends React.Component {
 
