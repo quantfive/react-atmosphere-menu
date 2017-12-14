@@ -34,6 +34,20 @@ export default class Nav extends React.Component {
     return (
       <div className={css(styles.nav, styles.fadeInLeft)}>
         { nav }
+        <div className={css(styles.tagLine)}>
+          { this.props.tagLine }
+        </div>
+        <div className={css(styles.company)}>
+          {this.props.logoComponent
+            ? <div className={css(styles.logo)}>
+                { this.props.logoComponent }
+              </div>
+            : null
+          }
+          <div className={css(styles.companyName) + ` ${this.props.companyClassName ? this.props.companyClassName : ''}`}>
+            { this.props.companyName }
+          </div>
+        </div>
       </div>
     );
   }
@@ -50,6 +64,26 @@ var styles = StyleSheet.create({
     ':hover': {
       opacity: '1',
     }
+  },
+  tagLine: {
+    color: 'rgba(255, 255, 255, 0.5)',
+    letterSpacing: '2px',
+    textTransform: 'uppercase',
+    fontSize: '12px',
+    marginTop: '40px',
+  },
+  company: {
+    display: 'flex',
+    marginTop: '10px',
+    alignItems: 'center',
+  },
+  logo: {
+    marginRight: '10px',
+  },
+  companyName: {
+    color: '#fff',
+    letterSpacing: '1px',
+    fontSize: '23px',
   },
   fadeInLeft: {
     animationName: fadeInLeft,

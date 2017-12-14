@@ -41,10 +41,19 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      <div className={css(styles.menu)}>
+      <div className={css(styles.menu, this.props.active && styles.backgroundActive) + ` ${this.props.menuClassName ? this.props.menuClassName : ''}`}>
         {this.props.active
           ? <div className={css(styles.navWrapper)}>
-              <Nav nav={this.props.nav} />
+              <Nav
+                nav={this.props.nav}
+                tagLine={this.props.tagLine}
+                logoComponent={this.props.logoComponent}
+                companyName={this.props.companyName}
+                companyClassName={this.props.companyClassName}
+                navItemClassName={this.props.navItemClassName}
+                navLinkStyle={this.props.navLinkStyle}
+                linkClassName={this.props.linkClassName}
+              />
             </div>
           : null
         }
@@ -67,7 +76,7 @@ const scaleInKeyFrames = {
 
 const opacityKeyframes = {
   'from': {
-    opacity: 0,
+    opacity: .3,
   },
 
   'to': {
@@ -98,11 +107,13 @@ const scaleOutKeyFrames = {
 
 var styles = StyleSheet.create({
   menu: {
+  },
+  backgroundActive: {
+    background: `url(${bg}) no-repeat center bottom`,
+    backgroundSize: 'cover',
     height: '100vh',
     minWidth: '100vw',
     minHeight: '500px',
-    background: `url(${bg})`,
-    backgroundSize: 'cover',
   },
   navWrapper: {
     display: 'flex',
@@ -132,11 +143,11 @@ var styles = StyleSheet.create({
   },
   appScale: {
     position: 'absolute',
-    right: '-100px',
+    right: '-250px',
     opacity: '.9',
     boxShadow: 'rgba(0, 0, 0, 0.3) 0 0 10px 3px',
     top: '50%',
-    maxHeight: '100vh',
+    maxHeight: '130vh',
     overflow: 'auto',
     minHeight: '400px',
     animationName: [scaleInKeyFrames, opacityKeyframes],

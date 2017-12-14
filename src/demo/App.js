@@ -22,7 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{height: '100vw', height: '100vh'}}>
-        <Menu active={this.state.active} nav={nav}>
+        <Menu active={this.state.active} nav={nav} tagLine={"Learn more here"} companyName={'Lunyr'}>
           <div className={css(styles.helloWorld)}>
             Hello World!
 
