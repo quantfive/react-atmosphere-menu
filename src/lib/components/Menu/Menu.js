@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var newClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.props.active && this.props.appClassName);
+        var newClass = css(!this.props.active && styles.app, this.props.active && styles.appScale) + this.props.active ? ` ${this.props.appClassName}` : '';
         return React.cloneElement(child, {
           className: `${classes} ${newClass}`,
         });
