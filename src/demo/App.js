@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from '../lib';
+import Reactagram from './007-reactagram/src/App';
 
 // NPM Modules
 import { StyleSheet, css } from 'aphrodite';
@@ -20,15 +21,20 @@ class App extends React.Component {
   }
 
   render() {
+    var location = window.location.pathname;
     return (
       <div style={{height: '100vw', height: '100vh'}}>
-        <Menu active={this.state.active} nav={nav} tagLine={"Learn more here"} companyName={'Lunyr'}>
-          <div className={css(styles.helloWorld)}>
-            Hello World!
+        <Menu onClick={() => this.setState({active: false})} active={this.state.active} nav={nav} tagLine={"Created By"} companyName={<a style={{textDecoration: 'none', color: '#fff'}} target="_blank" href="https://www.quantfive.org">Q5</a>}>
+          <div className={css(styles.app)}>
+            <div className={css(styles.helloWorld)}>
+              <i className={css(styles.hamburgerIcon) + " fa fa-bars"} aria-hidden="true" onClick={() => this.setState({active: !this.state.active})}></i>
+              React Atmosphere Menu by Q5
 
-            <button onClick={() => this.setState({active: !this.state.active})}>
-              NavBar
-            </button>
+              <div className={css(styles.path)}>
+                path: { location }
+              </div>
+            </div>
+            <Reactagram />
           </div>
         </Menu>
       </div>
@@ -37,13 +43,27 @@ class App extends React.Component {
 }
 
 var styles = StyleSheet.create({
+  app: {
+    minHeight: '100vh',
+  },
   helloWorld: {
-    fontSize: '50px',
-    background: '#fff',
-    padding: '50px',
-    height: '100%',
+    fontSize: '14px',
+    background: 'rgba(0, 0, 0, .3)',
     width: '100%',
-  }
+    color: '#fff',
+    position: 'absolute',
+    zIndex: '99999',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  hamburgerIcon: {
+    cursor: 'pointer',
+    height: '100%',
+    padding: '20px 20px',
+  },
+  path: {
+    marginLeft: '50px',
+  },
 });
 
 export default App;

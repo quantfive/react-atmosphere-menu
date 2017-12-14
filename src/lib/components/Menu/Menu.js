@@ -67,10 +67,15 @@ export default class Menu extends React.Component {
 
 const scaleInKeyFrames = {
   '0%': {
+    position: 'absolute',
     transform: 'scale(1)',
+    top: '0',
   },
 
   '100%': {
+    position: 'absolute',
+    right: '-250px',
+    top: '50%',
     transform: 'scale(.65) translateY(-50%)',
   },
 };
@@ -78,33 +83,27 @@ const scaleInKeyFrames = {
 
 const opacityKeyframes = {
   'from': {
-    opacity: .3,
+    opacity: .8,
   },
 
   'to': {
-    opacity: 1,
+    opacity: .9,
   }
 };
 
 const absoluteKeyFrames = {
   'from': {
     position: 'absolute',
-    right: '0',
+    // right: '-250px',
+    top: '50%',
+    transform: 'scale(.65) translateY(-50%)',
   },
 
   'to': {
-    position: 'relative',
-  }
-}
-
-const scaleOutKeyFrames = {
-  '0%': {
-    transform: 'scale(.5) translateY(-50%)',
-  },
-
-  '100%': {
+    position: 'absolute',
     transform: 'scale(1)',
-  },
+    top: '0',
+  }
 }
 
 var styles = StyleSheet.create({
@@ -137,11 +136,11 @@ var styles = StyleSheet.create({
   },
   fadeInRight: {
     animationName: fadeInRight,
-    animationDuration: '1s',
+    animationDuration: '.7s',
   },
   app: {
-    // transition: 'all .5s ease-in-out',
-    // animationName: [scaleOutKeyFrames, absoluteKeyFrames],
+    // transition: 'all 1s ease-in-out',
+    // animationName: [absoluteKeyFrames],
     // animationDuration: '1s',
   },
   appScale: {
@@ -156,7 +155,7 @@ var styles = StyleSheet.create({
     overflow: 'auto',
     minHeight: '400px',
     animationName: [scaleInKeyFrames, opacityKeyframes],
-    animationDuration: '1s',
+    animationDuration: '.5s',
     // animationIterationCount: 'infinite',
     transform: 'scale(.65) translateY(-50%)',
     transformOrigin: 'top right',
