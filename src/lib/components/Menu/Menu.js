@@ -12,6 +12,9 @@ import Nav from './components/Nav';
 import { StyleSheet, css } from 'aphrodite';
 import { fadeInRight } from 'react-animations';
 
+// Assets
+import bg from './assets/img/background.png';
+
 export default class Menu extends React.Component {
 
   constructor(props) {
@@ -25,7 +28,7 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var newClass = css(styles.app, this.props.active && styles.appScale, this.props.active && this.props.appStyle);
+        var newClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.props.active && this.props.appStyle);
         return React.cloneElement(child, {
           className: `${classes} ${newClass}`,
         });
@@ -50,12 +53,55 @@ export default class Menu extends React.Component {
   }
 }
 
+const scaleInKeyFrames = {
+  '0%': {
+    transform: 'scale(1)',
+  },
+
+  '100%': {
+    transform: 'scale(.65) translateY(-50%)',
+  },
+};
+
+
+const opacityKeyframes = {
+  'from': {
+    opacity: 0,
+  },
+
+  'to': {
+    opacity: 1,
+  }
+};
+
+const absoluteKeyFrames = {
+  'from': {
+    position: 'absolute',
+    right: '0',
+  },
+
+  'to': {
+    position: 'relative',
+  }
+}
+
+const scaleOutKeyFrames = {
+  '0%': {
+    transform: 'scale(.5) translateY(-50%)',
+  },
+
+  '100%': {
+    transform: 'scale(1)',
+  },
+}
+
 var styles = StyleSheet.create({
   menu: {
-    background: '#aaa',
     height: '100vh',
     minWidth: '100vw',
     minHeight: '500px',
+    background: `url(${bg})`,
+    backgroundSize: 'cover',
   },
   navWrapper: {
     display: 'flex',
@@ -79,15 +125,20 @@ var styles = StyleSheet.create({
     animationDuration: '1s',
   },
   app: {
-    transition: 'all .5s ease-in-out',
+    // transition: 'all .5s ease-in-out',
+    // animationName: [scaleOutKeyFrames, absoluteKeyFrames],
+    // animationDuration: '1s',
   },
   appScale: {
     position: 'absolute',
-    right: '0px',
+    right: '-100px',
     opacity: '.9',
     boxShadow: 'rgba(0, 0, 0, 0.3) 0 0 10px 3px',
     top: '50%',
-    transform: 'scale(.5) translateY(-50%)',
+    animationName: [scaleInKeyFrames, opacityKeyframes],
+    animationDuration: '1s',
+    // animationIterationCount: 'infinite',
+    transform: 'scale(.65) translateY(-50%)',
     transformOrigin: 'top right',
     zIndex: 2,
   },

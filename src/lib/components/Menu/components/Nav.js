@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
       } else {
         var active = window.location.pathname === navItem.path;
         return (
-          <div className={css(styles.navItem, this.props.navItemClassName, active && styles.activeLink)} style={this.props.navItemStyle}>
+          <div key={`react_atmosphere_nav_item_${index}`} className={css(styles.navItem, this.props.navItemClassName, active && styles.activeLink)} style={this.props.navItemStyle}>
             <a href={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
               { navItem.label }
             </a>
