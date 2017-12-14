@@ -116,8 +116,6 @@ var styles = StyleSheet.create({
     background: `url(${bg}) no-repeat center bottom`,
     backgroundSize: 'cover',
     height: '100vh',
-    width: '120vw',
-    minWidth: '500px',
     minHeight: '500px',
   },
   navWrapper: {
@@ -147,7 +145,8 @@ var styles = StyleSheet.create({
     // animationDuration: '1s',
   },
   appScale: {
-    minWidth: '100vw',
+    width: '120vw',
+    minWidth: '500px',
     position: 'absolute',
     right: '-250px',
     opacity: '.9',
