@@ -1,6 +1,6 @@
 {
   "name": "react-atmosphere-menu",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A React.js menu that pulls out and scales your app down",
   "main": "build/index.js",
   "scripts": {
