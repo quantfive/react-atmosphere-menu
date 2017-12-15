@@ -13,6 +13,9 @@
 
 http://lightninglu10.reactatmosphere.hellodeploy.com/
 
+![Alt Text](https://github.com/quantfive/react-atmosphere-menu/blob/master/react-atmosphere.gif?raw=true)
+
+
 ## Install the package
 Use NPM or Yarn
 
