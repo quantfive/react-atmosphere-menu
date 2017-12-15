@@ -52,7 +52,7 @@ export default class Menu extends React.Component {
         this.setState({
           zoomOut: false,
         })
-      }, 300)
+      }, 500)
     }
   }
 
@@ -119,11 +119,12 @@ const absoluteKeyFrames = {
   'from': {
     position: 'absolute',
     right: '-250px',
-    top: '0px',
+    // top: '-100px',
+    top: '-10%',
     transform: 'scale(.65)',
-    height: '100vh',
+    // height: '130vh',
     overflow: 'auto',
-    minHeight: '600px',
+    minWidth: '500px',
     width: '100vw',
     opacity: .9,
   },
@@ -173,7 +174,7 @@ var styles = StyleSheet.create({
   zoomOut: {
     animationName: [absoluteKeyFrames],
     // animationDirection: 'reverse',
-    animationDuration: '.3s',
+    animationDuration: '.5s',
     // animationTimingFunction: 'linear',
   },
   app: {
