@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../lib';
 import Reactagram from './007-reactagram/src/App';
+import Watermark from './Watermark';
 
 // NPM Modules
 import { StyleSheet, css } from 'aphrodite';
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Reactagram onClick={() => this.setState({active: false})}/>
           </div>
         </Menu>
+        <Watermark />
       </div>
     );
   }
