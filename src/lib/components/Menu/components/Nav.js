@@ -38,7 +38,7 @@ export default class Nav extends React.Component {
       }
     });
     return (
-      <div className={css(styles.nav, styles.fadeInLeft)} onClick={this.props.closeMenu}>
+      <div className={css(styles.nav, styles.fadeInLeft) + ` ${this.props.navClassName ? this.props.navClassName : ''}`} onClick={this.props.closeMenu}>
         { nav }
         <div className={css(styles.tagLine)}>
           { this.props.tagLine }

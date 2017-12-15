@@ -55,6 +55,7 @@ export default class Menu extends React.Component {
                 linkClassName={this.props.linkClassName}
                 reactRouter={this.props.reactRouter}
                 closeMenu={this.props.closeMenu}
+                navClassName={this.props.navClassName}
               />
             </div>
           : null
@@ -153,7 +154,7 @@ var styles = StyleSheet.create({
     top: '50%',
     maxHeight: '130vh',
     overflow: 'auto',
-    minHeight: '400px',
+    minHeight: '600px',
     animationName: [scaleInKeyFrames, opacityKeyframes],
     animationDuration: '.5s',
     // animationIterationCount: 'infinite',

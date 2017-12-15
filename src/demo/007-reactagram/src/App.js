@@ -13,7 +13,7 @@ class App extends Component {
   }
   render() {
     return(
-      <div className="App">
+      <div className="App" onClick={this.props.onClick}>
         <div className="ImageBG" style={{backgroundImage: 'url('+ this.state.image + ')'}}></div>
         <Settings image={this.state.image} />
       </div>  

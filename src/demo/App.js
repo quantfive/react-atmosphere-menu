@@ -24,7 +24,14 @@ class App extends React.Component {
     var location = window.location.pathname;
     return (
       <div style={{height: '100vw', height: '100vh'}}>
-        <Menu onClick={() => this.setState({active: false})} active={this.state.active} nav={nav} tagLine={"Created By"} companyName={<a style={{textDecoration: 'none', color: '#fff'}} target="_blank" href="https://www.quantfive.org">Q5</a>}>
+        <Menu
+          onClick={() => this.setState({active: false})}
+          active={this.state.active}
+          nav={nav}
+          tagLine={"Created By"}
+          appClassName={css(styles.appClass)}
+          companyName={<a style={{textDecoration: 'none', color: '#fff'}} target="_blank" href="https://www.quantfive.org">Q5</a>}
+          navClassName={css(styles.robotoMono)}>
           <div className={css(styles.app)}>
             <div className={css(styles.helloWorld)}>
               <i className={css(styles.hamburgerIcon) + " fa fa-bars"} aria-hidden="true" onClick={() => this.setState({active: !this.state.active})}></i>
@@ -34,7 +41,7 @@ class App extends React.Component {
                 path: { location }
               </div>
             </div>
-            <Reactagram />
+            <Reactagram onClick={() => this.setState({active: false})}/>
           </div>
         </Menu>
       </div>
@@ -43,8 +50,15 @@ class App extends React.Component {
 }
 
 var styles = StyleSheet.create({
+  appClass: {
+    height: '900px',
+  },
   app: {
     minHeight: '100vh',
+    fontFamily: "'Roboto Mono', monospace",
+  },
+  robotoMono: {
+    fontFamily: "'Roboto Mono', monospace"
   },
   helloWorld: {
     fontSize: '14px',

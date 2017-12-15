@@ -5,7 +5,8 @@
   display: flex;
   font-weight: 300;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 800px;
   justify-content: center;
   background: #252D3F;
   overflow: hidden;
