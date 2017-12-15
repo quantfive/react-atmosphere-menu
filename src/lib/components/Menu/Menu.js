@@ -32,7 +32,8 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.state.zoomOut && styles.zoomOut);
+        var zoomOutFrames = this.props.zoomOutFrames ? this.props.zoomOutFrames : styles.zoomOut;
+        var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.state.zoomOut && zoomOutFrames);
         var propsClass = this.props.active && !this.state.zoomOut && this.props.appClassName ? this.props.appClassName : '';
         return React.cloneElement(child, {
           className: `${classes} ${activeClass} ${propsClass}`,
