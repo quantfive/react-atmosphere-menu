@@ -85,3 +85,6 @@ Option|Type	|  Description
  navLinkStyle |  String  | Extra prop to style the `<a>` or `Link` element of each Navigation Item. Default: `linkStyle: { textDecoration: 'none', color: '#fff', fontWeight: '300', '@media only screen and (min-width: 768px)': { fontSize: '2em', }, '@media only screen and (min-width: 1440px)': { fontSize: '2.5em', }},`
  linkClassName |  String  | Extra class to style the `<a>` or `Link` element of each Navigation item. Has the same style default as above `navLinkStyle`.
  navClassName  |  String  | Extra class to style the whole Nav component.
+
+## Inspired by
+www.atmospherejs.com
