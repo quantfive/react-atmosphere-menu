@@ -40,8 +40,13 @@ export default class Menu extends React.Component {
   }
 
   render() {
+    var backgroundStyle = this.props.backgroundImage
+      ? {
+          background: this.props.backgroundImage
+        }
+      : null
     return (
-      <div className={css(styles.menu, this.props.active && styles.backgroundActive) + ` ${this.props.menuClassName ? this.props.menuClassName : ''}`}>
+      <div className={css(styles.menu, this.props.active && styles.backgroundActive) + ` ${this.props.menuClassName ? this.props.menuClassName : ''}`} style={backgroundStyle}>
         {this.props.active
           ? <div className={css(styles.navWrapper)}>
               <Nav
