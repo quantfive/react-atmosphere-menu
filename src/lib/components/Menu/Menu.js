@@ -23,6 +23,14 @@ export default class Menu extends React.Component {
     this.state = {
       zoomOut: false,
     }
+
+    var zoomDuration = this.props.zoomOutDuration ? this.props.zoomOutDuration : .5
+    this.styles = StyleSheet.create({
+      zoomOut: {
+        animationName: [absoluteKeyFrames],
+        animationDuration: `${zoomDuration}s`,
+      },
+    })
   }
 
   /***
@@ -32,7 +40,7 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var zoomOutFrames = this.props.zoomOutFrames ? this.props.zoomOutFrames : styles.zoomOut;
+        var zoomOutFrames = this.props.zoomOutFrames ? this.props.zoomOutFrames : this.styles.zoomOut;
         var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.state.zoomOut && zoomOutFrames);
         var propsClass = this.props.active && !this.state.zoomOut && this.props.appClassName ? this.props.appClassName : '';
         return React.cloneElement(child, {
@@ -46,7 +54,7 @@ export default class Menu extends React.Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     if (!nextProps.active && this.props.active) {
-      var keyFrameDuration = this.props.keyFrameDuration ? this.props.keyFrameDuration : 500
+      var zoomOutDuration = this.props.zoomOutDuration ? this.props.zoomOutDuration * 1000 : 500;
       this.setState({
         zoomOut: true,
       });
@@ -54,7 +62,7 @@ export default class Menu extends React.Component {
         this.setState({
           zoomOut: false,
         })
-      }, keyFrameDuration)
+      }, zoomOutDuration)
     }
   }
 
@@ -172,12 +180,6 @@ var styles = StyleSheet.create({
   fadeInRight: {
     animationName: fadeInRight,
     animationDuration: '.5s',
-  },
-  zoomOut: {
-    animationName: [absoluteKeyFrames],
-    // animationDirection: 'reverse',
-    animationDuration: '.5s',
-    // animationTimingFunction: 'linear',
   },
   app: {
     // transition: 'all 1s ease-in-out',
