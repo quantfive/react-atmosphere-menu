@@ -26,17 +26,17 @@ export default class Nav extends React.Component {
         return (
           <div
             key={`react_atmosphere_nav_item_${index}`}
-            className={css(styles.navItem, active && styles.activeLink) + this.props.navItemClassName ? ` ${this.props.navItemClassName}` : ''}
+            className={css(styles.navItem, active && styles.activeLink) + ` ${this.props.navItemClassName ? this.props.navItemClassName : ''}`}
             style={this.props.navItemStyle}>
             {this.props.reactRouter
               ? <Link
                   to={navItem.path}
-                  className={css(styles.linkStyle) + this.props.linkClassName ? ` ${this.props.linkClassName}` : ''}
+                  className={css(styles.linkStyle) + ` ${this.props.linkClassName ? this.props.linkClassName : ''}`}
                   style={this.props.navLinkStyle}>
                   { navItem.label }
                 </Link>
               : <a href={navItem.path}
-                  className={css(styles.linkStyle) + this.props.linkClassName ? ` ${this.props.linkClassName}` : ''}
+                  className={css(styles.linkStyle) + ` ${this.props.linkClassName ? this.props.linkClassName : ''}`}
                   style={this.props.navLinkStyle}>
                   { navItem.label }
                 </a>
@@ -46,7 +46,7 @@ export default class Nav extends React.Component {
       }
     });
     return (
-      <div className={css(styles.fadeInLeft) + this.props.navClassName ? ` ${this.props.navClassName}`  : ''} onClick={this.props.closeMenu}>
+      <div className={css(styles.fadeInLeft) +  ` ${this.props.navClassName ? this.props.navClassName: ''}`} onClick={this.props.closeMenu}>
         { nav }
         <div className={css(styles.tagLine)}>
           { this.props.tagLine }
