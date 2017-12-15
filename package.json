@@ -101,6 +101,16 @@
       "node"
     ]
   },
+  "keywords": [
+    "react",
+    "menu",
+    "atmosphere",
+    "react-atmosphere-menu",
+    "navbar",
+    "navigation",
+    "component",
+    "sidebar"
+  ],
   "babel": {
     "presets": [
       "react-app"
