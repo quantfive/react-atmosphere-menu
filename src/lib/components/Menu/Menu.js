@@ -46,6 +46,7 @@ export default class Menu extends React.Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     if (!nextProps.active && this.props.active) {
+      var keyFrameDuration = this.props.keyFrameDuration ? this.props.keyFrameDuration : 500
       this.setState({
         zoomOut: true,
       });
@@ -53,7 +54,7 @@ export default class Menu extends React.Component {
         this.setState({
           zoomOut: false,
         })
-      }, 500)
+      }, keyFrameDuration)
     }
   }
 
