@@ -70,14 +70,15 @@ Option|Type	|  Description
  companyName |  String  | Below the navigation, there will be an area for extra text. Here you can display your name or company or group.
  logoComponent |  Component  | Displayed in line with the `companyName`, add a component for a logo like so: `<img src={LOGO} />`.
  closeMenu |  Function  | The function that closes your atmosphere menu. Should set the variable for the `active` prop to false.
+ backgroundImage |  Image / String  | An image you want to display in the background on the active Menu or a color. It can be a link to an image online, a file, or #eee.
  
  ## Extra Options / Styling options
  Option|Type	|  Description
 |:---|:---|:---
+ menuClassName |  String  | Extra class to style the AtmosphereMenu component. Default: `menu: { position: 'relative', overflow: 'hidden', },`
  appClassName	|  String  | Extra class to style your app when the menu is active.
  companyClassName	|  String  | Extra class to style the `companyName` text.
- navItemClassName |  String  | Extra class to style each Navigation item. Default: `navItem: { \nmarginBottom: '25px', \nopacity: '.7', \n':hover': { \n\t\topacity: '1',\n\t}\n},`
- tagLine |  String  | Below the navigation, there will be an area for extra text. The tagline goes above the company text.
- companyName |  String  | Below the navigation, there will be an area for extra text. Here you can display your name or company or group.
- closeMenu |  Function  | The function that closes your atmosphere menu. Should set the variable for the `active` prop to false.
-
+ navItemClassName |  String  | Extra class to style each Navigation item. Default: `navItem: { marginBottom: '25px', opacity: '.7', ':hover': { opacity: '1',}},`
+ navLinkStyle |  String  | Extra prop to style the `<a>` or `Link` element of each Navigation Item. Default: `linkStyle: { textDecoration: 'none', color: '#fff', fontWeight: '300', '@media only screen and (min-width: 768px)': { fontSize: '2em', }, '@media only screen and (min-width: 1440px)': { fontSize: '2.5em', }},`
+ linkClassName |  String  | Extra class to style the `<a>` or `Link` element of each Navigation item. Has the same style default as above `navLinkStyle`.
+ navClassName  |  String  | Extra class to style the whole Nav component.
