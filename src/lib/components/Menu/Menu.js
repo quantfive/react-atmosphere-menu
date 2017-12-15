@@ -19,6 +19,10 @@ export default class Menu extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      zoomOut: false,
+    }
   }
 
   /***
@@ -28,8 +32,8 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale);
-        var propsClass = this.props.active && this.props.appClassName ? this.props.appClassName : '';
+        var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.state.zoomOut && styles.zoomOut);
+        var propsClass = this.props.active && !this.state.zoomOut && this.props.appClassName ? this.props.appClassName : '';
         return React.cloneElement(child, {
           className: `${classes} ${activeClass} ${propsClass}`,
         });
@@ -39,6 +43,19 @@ export default class Menu extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps, nextState) {
+    if (!nextProps.active && this.props.active) {
+      this.setState({
+        zoomOut: true,
+      });
+      setTimeout(() => {
+        this.setState({
+          zoomOut: false,
+        })
+      }, 300)
+    }
+  }
+
   render() {
     var backgroundStyle = this.props.backgroundImage
       ? {
@@ -46,8 +63,10 @@ export default class Menu extends React.Component {
         }
       : null
     return (
-      <div className={css(styles.menu, this.props.active && styles.backgroundActive) + ` ${this.props.menuClassName ? this.props.menuClassName : ''}`} style={backgroundStyle}>
-        {this.props.active
+      <div
+        className={css(styles.menu, ((this.props.active || this.state.zoomOut) && styles.backgroundActive)) + ` ${this.props.menuClassName ? this.props.menuClassName : ''}`}
+        style={backgroundStyle}>
+        {this.props.active || this.state.zoomOut
           ? <div className={css(styles.navWrapper)}>
               <Nav
                 nav={this.props.nav}
@@ -86,10 +105,9 @@ const scaleInKeyFrames = {
   },
 };
 
-
 const opacityKeyframes = {
   'from': {
-    opacity: .8,
+    opacity: 1,
   },
 
   'to': {
@@ -100,15 +118,23 @@ const opacityKeyframes = {
 const absoluteKeyFrames = {
   'from': {
     position: 'absolute',
-    // right: '-250px',
-    top: '50%',
-    transform: 'scale(.65) translateY(-50%)',
+    right: '-250px',
+    top: '0px',
+    transform: 'scale(.65)',
+    height: '100vh',
+    overflow: 'auto',
+    minHeight: '600px',
+    width: '100vw',
+    opacity: .9,
   },
 
   'to': {
     position: 'absolute',
     transform: 'scale(1)',
     top: '0',
+    right: '0px',
+    width: '100vw',
+    opacity: 1,
   }
 }
 
@@ -142,7 +168,13 @@ var styles = StyleSheet.create({
   },
   fadeInRight: {
     animationName: fadeInRight,
-    animationDuration: '.7s',
+    animationDuration: '.5s',
+  },
+  zoomOut: {
+    animationName: [absoluteKeyFrames],
+    // animationDirection: 'reverse',
+    animationDuration: '.3s',
+    // animationTimingFunction: 'linear',
   },
   app: {
     // transition: 'all 1s ease-in-out',
@@ -162,6 +194,7 @@ var styles = StyleSheet.create({
     minHeight: '600px',
     animationName: [scaleInKeyFrames, opacityKeyframes],
     animationDuration: '.5s',
+    // animationTimingFunction: 'linear',
     // animationIterationCount: 'infinite',
     transform: 'scale(.65) translateY(-50%)',
     transformOrigin: 'top right',

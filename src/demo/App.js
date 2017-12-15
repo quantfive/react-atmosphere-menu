@@ -54,9 +54,11 @@ class App extends React.Component {
 var styles = StyleSheet.create({
   appClass: {
     height: '900px',
+    background: '#000',
   },
   app: {
     minHeight: '100vh',
+    background: '#000',
     fontFamily: "'Roboto Mono', monospace",
   },
   robotoMono: {
