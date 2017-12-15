@@ -24,12 +24,20 @@ export default class Nav extends React.Component {
       } else {
         var active = window.location.pathname === navItem.path;
         return (
-          <div key={`react_atmosphere_nav_item_${index}`} className={css(styles.navItem, this.props.navItemClassName, active && styles.activeLink)} style={this.props.navItemStyle}>
+          <div
+            key={`react_atmosphere_nav_item_${index}`}
+            className={css(styles.navItem, active && styles.activeLink) + this.props.navItemClassName ? ` ${this.props.navItemClassName}` : ''}
+            style={this.props.navItemStyle}>
             {this.props.reactRouter
-              ? <Link to={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
+              ? <Link
+                  to={navItem.path}
+                  className={css(styles.linkStyle) + this.props.linkClassName ? ` ${this.props.linkClassName}` : ''}
+                  style={this.props.navLinkStyle}>
                   { navItem.label }
                 </Link>
-              : <a href={navItem.path} className={css(styles.linkStyle, this.props.linkClassName)} style={this.props.navLinkStyle}>
+              : <a href={navItem.path}
+                  className={css(styles.linkStyle) + this.props.linkClassName ? ` ${this.props.linkClassName}` : ''}
+                  style={this.props.navLinkStyle}>
                   { navItem.label }
                 </a>
             }
@@ -38,7 +46,7 @@ export default class Nav extends React.Component {
       }
     });
     return (
-      <div className={css(styles.nav, styles.fadeInLeft) + ` ${this.props.navClassName ? this.props.navClassName : ''}`} onClick={this.props.closeMenu}>
+      <div className={css(styles.fadeInLeft) + this.props.navClassName ? ` ${this.props.navClassName}`  : ''} onClick={this.props.closeMenu}>
         { nav }
         <div className={css(styles.tagLine)}>
           { this.props.tagLine }
@@ -50,7 +58,7 @@ export default class Nav extends React.Component {
               </div>
             : null
           }
-          <div className={css(styles.companyName) + ` ${this.props.companyClassName ? this.props.companyClassName : ''}`}>
+          <div className={css(styles.companyName) + this.props.companyClassName ? ` ${this.props.companyClassName}` : ''}>
             { this.props.companyName }
           </div>
         </div>
@@ -60,9 +68,6 @@ export default class Nav extends React.Component {
 }
 
 var styles = StyleSheet.create({
-  nav: {
-
-  },
   navItem: {
     marginBottom: '25px',
     opacity: '.7',
