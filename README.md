@@ -76,8 +76,7 @@ Option|Type	|  Description
 |:---|:---|:---
  appClassName	|  String  | Extra class to style your app when the menu is active.
  companyClassName	|  String  | Extra class to style the `companyName` text.
- navItemClassName |  String  | Extra class to style each Navigation item. Default: ```
- navItem: {
+ navItemClassName |  String  | Extra class to style each Navigation item. Default: `navItem: {
     marginBottom: '25px',
     opacity: '.7',
 
@@ -85,7 +84,7 @@ Option|Type	|  Description
       opacity: '1',
     }
   },
-  ```
+  `
  tagLine |  String  | Below the navigation, there will be an area for extra text. The tagline goes above the company text.
  companyName |  String  | Below the navigation, there will be an area for extra text. Here you can display your name or company or group.
  closeMenu |  Function  | The function that closes your atmosphere menu. Should set the variable for the `active` prop to false.
