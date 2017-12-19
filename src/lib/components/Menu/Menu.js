@@ -23,14 +23,6 @@ export default class Menu extends React.Component {
     this.state = {
       zoomOut: false,
     }
-
-    var zoomDuration = this.props.zoomOutDuration ? this.props.zoomOutDuration : .5
-    this.styles = StyleSheet.create({
-      zoomOut: {
-        animationName: [absoluteKeyFrames],
-        animationDuration: `${zoomDuration}s`,
-      },
-    })
   }
 
   /***
@@ -40,7 +32,7 @@ export default class Menu extends React.Component {
     return React.Children.map(this.props.children, (child, index) => {
       if (index === 0) {
         var classes = child.props.className;
-        var zoomOutFrames = this.props.zoomOutFrames ? this.props.zoomOutFrames : this.styles.zoomOut;
+        var zoomOutFrames = this.props.zoomOutFrames ? this.props.zoomOutFrames : styles.zoomOut;
         var activeClass = css(!this.props.active && styles.app, this.props.active && styles.appScale, this.state.zoomOut && zoomOutFrames);
         var propsClass = this.props.active && !this.state.zoomOut && this.props.appClassName ? this.props.appClassName : '';
         return React.cloneElement(child, {
@@ -100,6 +92,8 @@ export default class Menu extends React.Component {
   }
 }
 
+const SCALE = .8; // the scale amount
+
 const scaleInKeyFrames = {
   '0%': {
     position: 'absolute',
@@ -111,7 +105,7 @@ const scaleInKeyFrames = {
     position: 'absolute',
     right: '-250px',
     top: '50%',
-    transform: 'scale(.65) translateY(-50%)',
+    transform: `scale(${SCALE}) translateY(-50%)`,
   },
 };
 
@@ -125,18 +119,21 @@ const opacityKeyframes = {
   }
 };
 
-const absoluteKeyFrames = {
+const zoomOutKeyFrames = {
   'from': {
+    width: '100vw',
+    minWidth: '500px',
     position: 'absolute',
     right: '-250px',
-    // top: '-100px',
-    top: '-10%',
-    transform: 'scale(.65)',
-    // height: '130vh',
+    opacity: '.9',
+    boxShadow: 'rgba(0, 0, 0, 0.3) 0 0 10px 3px',
+    top: '50%',
+    maxHeight: '100vh',
     overflow: 'auto',
-    minWidth: '500px',
-    width: '100vw',
-    opacity: .9,
+    minHeight: '600px',
+    transform: `scale(${SCALE}) translateY(-50%)`,
+    transformOrigin: 'right top',
+    zIndex: 2,
   },
 
   'to': {
@@ -145,6 +142,10 @@ const absoluteKeyFrames = {
     top: '0',
     right: '0px',
     width: '100vw',
+    minHeight: '600px',
+    maxHeight: '100vh',
+    minWidth: '500px',
+    overflow: 'auto',
     opacity: 1,
   }
 }
@@ -153,6 +154,10 @@ var styles = StyleSheet.create({
   menu: {
     position: 'relative',
     overflow: 'hidden',
+  },
+  zoomOut: {
+    animationName: [zoomOutKeyFrames],
+    animationDuration: '.5s',
   },
   backgroundActive: {
     background: `url(${bg}) no-repeat center bottom`,
@@ -187,22 +192,22 @@ var styles = StyleSheet.create({
     // animationDuration: '1s',
   },
   appScale: {
-    width: '120vw',
+    width: '100vw',
     minWidth: '500px',
     position: 'absolute',
     right: '-250px',
     opacity: '.9',
     boxShadow: 'rgba(0, 0, 0, 0.3) 0 0 10px 3px',
     top: '50%',
-    maxHeight: '130vh',
+    maxHeight: '100vh',
     overflow: 'auto',
     minHeight: '600px',
     animationName: [scaleInKeyFrames, opacityKeyframes],
     animationDuration: '.5s',
     // animationTimingFunction: 'linear',
     // animationIterationCount: 'infinite',
-    transform: 'scale(.65) translateY(-50%)',
-    transformOrigin: 'top right',
+    transform: `scale(${SCALE}) translateY(-50%)`,
+    transformOrigin: 'right top',
     zIndex: 2,
   },
 });

@@ -58,7 +58,7 @@ export default class Nav extends React.Component {
               </div>
             : null
           }
-          <div className={css(styles.companyName) + this.props.companyClassName ? ` ${this.props.companyClassName}` : ''}>
+          <div className={css(styles.companyName) + ` ${this.props.companyClassName ? this.props.companyClassName : ''}`}>
             { this.props.companyName }
           </div>
         </div>
