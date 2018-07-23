@@ -8,9 +8,9 @@ import './Watermark.css'
 export default class Watermark extends React.Component {
     render() {
         return (
-            <a href='https://www.hellodeploy.com' target='_blank' rel="noopener noreferrer">
+            <a href='https://www.quantfive.org' target='_blank' rel="noopener noreferrer">
                 <div className='watermark'>
-                    Deployed by <span className='hello'>Hello</span><span className='deploy'>Deploy</span>
+                    Built By Q5
                 </div>
             </a>
         )
